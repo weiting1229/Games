@@ -1,8 +1,22 @@
-# Games
+# 小遊戲列表
 
-<h4 align="center">
-  <img alt="common readme" src="common-readme.png">
-</h4>
+**Flappy Bird**
+- 利用Java視窗元件來實作的小遊戲
+- 運用原理為基本的執行緒概念與圖片檔案處理
+<br>
+<img alt="common readme" src="https://i.imgur.com/5BKAZdm.png">
+<img alt="common readme" src="https://i.imgur.com/cwOoGFu.png">
+
+---
+**番茄時鐘**
+- 利用Java視窗元件來實作的計時小工具
+- 透過新增與載入記錄檔,程式會幫你紀錄並計時你的工作時間與休息時間
+- 透過MySQL資料庫來儲存記錄檔,存取技術為JDBC
+- 資料庫創建指令,其路徑為:
+<br>
+<img alt="common readme" src="https://i.imgur.com/7wiDhQq.png">
+<img alt="common readme" src="https://i.imgur.com/hS97tVZ.png">
+<img alt="common readme" src="https://i.imgur.com/C4VkTjy.png">
 
 ***Module consumers!*** Frustrated by each module having its own wildly
 unique README format? Annoyed by modules that omit critical sections like
@@ -45,7 +59,7 @@ Here are some READMEs generated using common-readme:
 
 - [`collide-2d-aabb-aabb`](https://github.com/noffle/collide-2d-aabb-aabb)
 - [`goertzel`](https://github.com/noffle/goertzel)
-- [`twitter-kv`](https://github.com/noffle/twitter-kv)
+- [`twittea-kv`](https://github.com/noffle/twitter-kv)
 
 *([Submit a pull request](https://github.com/noffle/common-readme/pulls) and add
 yours here!)*
