@@ -12,7 +12,7 @@
 - 利用Java視窗元件來實作的計時小工具
 - 透過新增與載入記錄檔,程式會幫你紀錄並計時你的工作時間與休息時間
 - 透過MySQL資料庫來儲存記錄檔,存取技術為JDBC
-- 資料庫創建指令,其路徑為:
+- 資料庫創建指令,其路徑為:src/myApp/Tomato.sql
 <br>
 <img alt="common readme" src="https://i.imgur.com/7wiDhQq.png">
 <img alt="common readme" src="https://i.imgur.com/hS97tVZ.png">
