@@ -65,8 +65,8 @@ public class Tomato extends JFrame{
 		TFrestTime = new JTextField(10);
 		TFcount = new JTextField(10);
 		Lname = new JLabel("檔名:");
-		LworkTIme = new JLabel("工作時間(秒):");
-		LrestTime = new JLabel("休息時間(秒):");
+		LworkTIme = new JLabel("工作時間(分):");
+		LrestTime = new JLabel("休息時間(分):");
 		Lcount = new JLabel("次數:");
 		countDown = new JLabel();
 		
@@ -222,35 +222,51 @@ public class Tomato extends JFrame{
 		
 		if("工作時間".equals(nowText.substring(0,4))) {
 			timer.scheduleAtFixedRate(new TimerTask() {
-				int i = Integer.parseInt(workTime);
+				int i = Integer.parseInt(workTime) - 1;
+				int j = 59;
 				@Override
 				public void run() {
-					countDown.setText(String.format("剩餘時間:%d秒", i));
-					i--;
+					if(i == -01 && j == -01){
+						timer.cancel();
+					}else {
+						countDown.setText(String.format("剩餘時間: %02d:%02d", i, j));
+						j--;
+						if(j == -01) {
+							i--;
+							j += 60;
+						}
+					}
 				}
 			}, 0, 1000);
 			
 			
 		}else if("休息時間".equals(nowText.substring(0,4))) {
 			timer.scheduleAtFixedRate(new TimerTask() {
-				int i = Integer.parseInt(restTime);
+				int i = Integer.parseInt(restTime) - 1;
+				int j = 59;
 				@Override
 				public void run() {
-					countDown.setText(String.format("剩餘時間:%d秒", i));
-					i--;
+					if(i == -01 && j == -01){
+						timer.cancel();
+					}else {
+						countDown.setText(String.format("剩餘時間: %02d:%02d", i, j));
+						j--;
+						if(j == -01) {
+							i--;
+							j += 60;
+						}
+					}
 				}
 			}, 0, 1000);
 		}
-		
-		
 	}
 	
-	//讀秒切換機制
+	//工作時間、休息時間
 	class Mythread extends Thread{
 		int workSecond ,restSecond,round;
 		Mythread(String work ,String rest ,String count){
-			workSecond = (Integer.parseInt(work))*1000;
-			restSecond = (Integer.parseInt(rest))*1000;
+			workSecond = (Integer.parseInt(work))*1000*60;
+			restSecond = (Integer.parseInt(rest))*1000*60;
 			round = (Integer.parseInt(count));
 		}
 		public void run(){	
@@ -280,7 +296,6 @@ public class Tomato extends JFrame{
 	
 	//關闢番茄鐘
 	private void stopRun() {
-		//使用interrupt()利用拋出例外來停止執行緒較為安全,stop方法強制停止可能發生嚴重錯誤
 		mythread.stop();
 		timer.cancel();
 		result.setText("已停止,共工作"+work+"次,共休息"+rest+"次");
@@ -307,8 +322,8 @@ public class Tomato extends JFrame{
 				int workInt = Integer.parseInt(workTime);
 				int restInt = Integer.parseInt(restTime);
 				int CountInt = Integer.parseInt(count);
-				result.setText("讀取成功! 載入設定檔:"+"\n\n名稱:"+name+"\n工作時間:"+workInt+"秒\n休息時間:"+restInt+"秒\n次數:"+CountInt
-						+"次\n總共耗時"+((workInt+restInt)*CountInt)+"秒\n\n請按下\"開始\"鍵,開始計時");
+				result.setText("讀取成功! 載入設定檔:"+"\n\n名稱:"+name+"\n工作時間:"+workInt+"分鐘\n休息時間:"+restInt+"分鐘\n次數:"+CountInt
+						+"次\n總共耗時"+((workInt+restInt)*CountInt)+"分鐘\n\n請按下\"開始\"鍵,開始計時");
 			}else {
 				result.setText("讀取失敗,請重新載入");
 			}
@@ -340,8 +355,8 @@ public class Tomato extends JFrame{
 					int workInt = Integer.parseInt(workTime);
 					int restInt = Integer.parseInt(restTime);
 					int CountInt = Integer.parseInt(count);
-					result.append("名稱:"+name+"\n工作時間:"+workInt+"秒\n休息時間:"+restInt+"秒\n次數:"+CountInt
-							+"次\n總共耗時"+((workInt+restInt)*CountInt)+"秒\n---------------------------------\n");
+					result.append("名稱:"+name+"\n工作時間:"+workInt+"分鐘\n休息時間:"+restInt+"分鐘\n次數:"+CountInt
+							+"次\n總共耗時"+((workInt+restInt)*CountInt)+"分鐘\n---------------------------------\n");
 				}
 				result.append("總共找到"+row+"筆資料,請載入設定檔");
 			}else {
@@ -396,7 +411,7 @@ public class Tomato extends JFrame{
 		BufferedImage imgtomato;
 
 		public myPanel() {
-			setPreferredSize(new Dimension(336,324));
+			setPreferredSize(new Dimension(336,250));
 			setBackground(Color.yellow);
 		}
 		@Override
