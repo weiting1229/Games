@@ -418,7 +418,9 @@ public class Tomato extends JFrame{
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			try {
-				imgtomato = ImageIO.read(new File("dir1/tomato3.png"));
+				String path = this.getClass().getClassLoader().getResource(".").getPath();
+//				imgtomato = ImageIO.read(new File("C:/Users/User/git/Games/myApp/dir1/tomato3.png"));
+				imgtomato = ImageIO.read(new File("myApp/dir1/tomato3.png"));
 				g.drawImage(imgtomato,0,0,null);
 			} catch (IOException e) {
 				System.out.println(e.toString());

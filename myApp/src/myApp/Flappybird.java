@@ -53,11 +53,11 @@ public class Flappybird extends JFrame{
 		
 		public MyPanel(){
 			try {
-				background = ImageIO.read(new File("dir1/bg1.png"));
-				bird1 = ImageIO.read(new File("dir1/bird1.png"));
-				bird2 = ImageIO.read(new File("dir1/bird2.png"));
-				pipeDown = ImageIO.read(new File("dir1/pipe.png"));
-				pipeUp = ImageIO.read(new File("dir1/pipe2.png"));
+				background = ImageIO.read(new File("myApp/dir1/bg1.png"));
+				bird1 = ImageIO.read(new File("myApp/dir1/bird1.png"));
+				bird2 = ImageIO.read(new File("myApp/dir1/bird2.png"));
+				pipeDown = ImageIO.read(new File("myApp/dir1/pipe.png"));
+				pipeUp = ImageIO.read(new File("myApp/dir1/pipe2.png"));
 			} catch (Exception e) {
 				System.out.println(e.toString());
 			}
