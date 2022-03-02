@@ -70,6 +70,7 @@ public class Tomato extends JFrame{
 		Lcount = new JLabel("次數:");
 		countDown = new JLabel();
 		
+
 		prop = new Properties();
 		prop.put("user", "root");
 		prop.put("password", "root");
@@ -221,6 +222,7 @@ public class Tomato extends JFrame{
 		String nowText = result.getText();
 		
 		if("工作時間".equals(nowText.substring(0,4))) {
+			System.out.println("工作");
 			timer.scheduleAtFixedRate(new TimerTask() {
 				int i = Integer.parseInt(workTime) - 1;
 				int j = 59;
@@ -241,6 +243,7 @@ public class Tomato extends JFrame{
 			
 			
 		}else if("休息時間".equals(nowText.substring(0,4))) {
+			System.out.println("休息");
 			timer.scheduleAtFixedRate(new TimerTask() {
 				int i = Integer.parseInt(restTime) - 1;
 				int j = 59;
@@ -264,6 +267,7 @@ public class Tomato extends JFrame{
 	//工作時間、休息時間
 	class Mythread extends Thread{
 		int workSecond ,restSecond,round;
+
 		Mythread(String work ,String rest ,String count){
 			workSecond = (Integer.parseInt(work))*1000*60;
 			restSecond = (Integer.parseInt(rest))*1000*60;
@@ -287,6 +291,7 @@ public class Tomato extends JFrame{
 					rest++;
 				}
 				result.setText("結束,總共執行"+round+"次");
+				countDown.setText(String.format("剩餘時間: %02d:%02d", 0, 0));
 				timer.cancel();
 			} catch (InterruptedException e) {
 				System.out.println(e.toString());
